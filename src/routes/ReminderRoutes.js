@@ -5,7 +5,7 @@ import {
   createReminder,
   updateReminder,
   deleteReminder,
-} from "../controllers/ReminderController.js";
+} from   "../controllers/ReminderController.js";
 
 const router = express.Router();
 
@@ -25,4 +25,3 @@ router.put("/:id", updateReminder);
 // Borrar un recordatorio por ID
 router.delete("/:id", deleteReminder);
 
-export default router;
