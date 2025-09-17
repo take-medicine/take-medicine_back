@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "medicine_user",
+    "password": "medicine_pass_2025",
+    "database": "medicine_db",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql",
+    "logging": true
+  },
+  "test": {
+    "username": "medicine_user",
+    "password": "medicine_pass_2025",
+    "database": "medicine_test_db",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql",
+    "logging": false
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "mysql",
+    "logging": false
+  }
+}
