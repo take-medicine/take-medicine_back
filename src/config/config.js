@@ -1,12 +1,11 @@
 import 'dotenv/config';
 
-
-export const   username = process.env.DB_USER || 'root';
-export const   password = process.env.DB_PASS || null;
-export const    database = process.env.DB_NAME || 'app_development';
-export const  host = process.env.DB_HOST || '127.0.0.1';
-export const  dialect = 'mysql';
-
+export const username = process.env.DB_USER || 'postgres';       
+export const password = process.env.DB_PASS || '5891';  
+export const database = process.env.DB_NAME || 'postgres'; 
+export const host = process.env.DB_HOST || '127.0.0.1';
+export const port = process.env.DB_PORT || 5432;                
+export const dialect = 'postgres';     
 
 //   },
 //   test: {
