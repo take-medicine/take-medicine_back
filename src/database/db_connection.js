@@ -1,13 +1,15 @@
 import { Sequelize } from "sequelize";
-import { username, password, database, host, dialect } from "../config/config.js";
 
-const db_connection = new Sequelize(database, username, password, {
-    host: host,
-    dialect: dialect,
-    define: {
-        timestamps: true,
-        underscored: true
-    }
+// Configuración directa por ahora para que funcione
+const sequelize = new Sequelize('medicine_db', 'medicine_user', 'medicine_pass_2025', {
+  host: '127.0.0.1',
+  port: 3306,
+  dialect: 'mysql',
+  logging: console.log, // Para ver las consultas SQL
+  define: {
+    timestamps: true,
+    underscored: true
+  }
 });
 
-export default db_connection;
+export default sequelize;

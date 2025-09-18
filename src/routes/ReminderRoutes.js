@@ -1,11 +1,12 @@
 import express from "express";
+import { body, param, validationResult } from "express-validator"; // ← AGREGAR ESTA LÍNEA
 import {
   getAllReminders,
   getOneReminder,
   createReminder,
   updateReminder,
   deleteReminder,
-} from   "../controllers/ReminderController.js";
+} from "../controllers/ReminderController.js";
 
 const router = express.Router();
 // listar por userId (en ruta)

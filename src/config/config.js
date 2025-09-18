@@ -1,27 +1,30 @@
+// REEMPLAZA todo el contenido actual con esto:
 import 'dotenv/config';
 
+const config = {
+  development: {
+    username: process.env.DB_USER || 'medicine_user',
+    password: process.env.DB_PASS || 'medicine_pass_2025',
+    database: process.env.DB_NAME || 'medicine_db',
+    host: process.env.DB_HOST || '127.0.0.1',
+    port: process.env.DB_PORT || 3306,
+    dialect: 'mysql',
+    logging: true
+  },
+  test: {
+    username: process.env.DB_USER || 'medicine_user',
+    password: process.env.DB_PASS || 'medicine_pass_2025',
+    database: process.env.DB_TEST || 'medicine_test_db',
+    host: process.env.DB_HOST || '127.0.0.1',
+    port: process.env.DB_PORT || 3306,
+    dialect: 'mysql',
+    logging: false
+  },
+  production: {
+    use_env_variable: "DATABASE_URL",
+    dialect: "mysql",
+    logging: false
+  }
+};
 
-export const   username = process.env.DB_USER || 'root';
-export const   password = process.env.DB_PASS || null;
-export const    database = process.env.DB_NAME || 'app_development';
-export const  host = process.env.DB_HOST || '127.0.0.1';
-export const  dialect = 'mysql';
-
-
-//   },
-//   test: {
-//     username: process.env.DB_USER || 'root',
-//     password: process.env.DB_PASS || null,
-//     database: process.env.DB_TEST || 'app_test',
-//     host: process.env.DB_HOST || '127.0.0.1',
-//     dialect: 'mysql',
-//     logging: false
-//   },
-//   production: {
-//     username: process.env.DB_USER,
-//     password: process.env.DB_PASS,
-//     database: process.env.DB_NAME,
-//     host: process.env.DB_HOST,
-//     dialect: 'mysql'
-//   }
-// };
+export default config;

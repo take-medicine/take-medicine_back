@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { User } from '../models/index.js';
+import User from '../models/UserModels.js'; // Importamos el modelo que acabamos de arreglar
 
-export const create = async (req, res, next) => {
+export const createUser = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
 
@@ -13,14 +13,23 @@ export const create = async (req, res, next) => {
     }
 
     // Hashear contraseña
-    const hashed = await bcrypt.hash(password, 10);
-    const user = await User.create({ name, email, password: hashed });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await User.create({ 
+      name, 
+      email, 
+      password: hashedPassword 
+    });
 
-    const plain = user.toJSON();
-    delete plain.password;
+    // Remover la contraseña de la respuesta
+    const userResponse = user.toJSON();
+    delete userResponse.password;
 
-    res.status(201).json(plain);
+    res.status(201).json({
+      message: 'Usuario creado exitosamente',
+      user: userResponse
+    });
   } catch (err) {
+    console.error('Error creating user:', err);
     next(err);
   }
 };
@@ -45,14 +54,20 @@ export const login = async (req, res, next) => {
     const token = jwt.sign(
       { id: user.id, email: user.email },
       process.env.JWT_SECRET || 'secreto_super_seguro',
-      { expiresIn: '1h' }
+      { expiresIn: '24h' }
     );
 
-    const plain = user.toJSON();
-    delete plain.password;
+    // Remover contraseña de la respuesta
+    const userResponse = user.toJSON();
+    delete userResponse.password;
 
-    res.json({ user: plain, token });
+    res.json({ 
+      message: 'Login exitoso',
+      user: userResponse, 
+      token 
+    });
   } catch (err) {
+    console.error('Error in login:', err);
     next(err);
   }
 };
