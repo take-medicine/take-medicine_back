@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../../src/utils/app');
+const app = require('../../src/app');
 const { sequelize } = require('../../src/models');
 
 beforeAll(async () => {
