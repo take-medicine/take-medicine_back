@@ -1,55 +1,28 @@
 {
-  "name": "medicine-reminder-api",
+  "name": "recuerdamed-api",
   "version": "1.0.0",
-  "description": "Backend for medicine reminder application - F5 Hackathon",
-  "main": "src/server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "db:migrate": "npx sequelize-cli db:migrate",
-    "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "db:migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
-    "db:seed": "npx sequelize-cli db:seed:all",
-    "db:reset": "npm run db:migrate:undo:all && npm run db:migrate"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
   "dependencies": {
-    "cors": "^2.8.5",
+    "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "express-validator": "^7.2.1",
-    "helmet": "^8.1.0",
-    "joi": "^18.0.1",
-    "morgan": "^1.10.1",
     "mysql2": "^3.15.0",
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
+    "cross-env": "^10.0.0",
     "jest": "^30.1.3",
     "nodemon": "^3.1.10",
     "sequelize-cli": "^6.6.3",
     "supertest": "^7.1.4"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coverageDirectory": "coverage",
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/tests/**",
-      "!src/migrations/**",
-      "!src/seeders/**"
-    ]
-  },
-  "keywords": [
-    "medicine",
-    "reminder",
-    "backend",
-    "api",
-    "mysql"
-  ],
-  "author": "Your name",
-  "license": "MIT",
-  "type": "commonjs"
+  }
 }
