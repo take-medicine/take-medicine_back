@@ -2,8 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 
-import ReminderRoutes from "./src/routes/ReminderRoutes.js";
-import UserRoutes from "./routes/userRoutes.js";
+import ReminderRoutes from "../src/routes/ReminderRoutes.js";
+import UserRoutes from "../routes/userRoutes.js";
 
 dotenv.config();
 
