@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../index.js';
+import app from "../server.js"; 
 
 describe('POST /api/users', () => {
   it('debería crear un usuario', async () => {

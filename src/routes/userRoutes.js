@@ -1,7 +1,7 @@
 // src/routes/userRoutes.js
 import { Router } from 'express';
 import { body, validationResult } from 'express-validator';
-import { createUser } from './controllers/UserController.js';
+import { createUser } from '../controllers/Usercontroller.js';
 
 const router = Router();
 
