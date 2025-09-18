@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 export const   username = process.env.DB_USER || 'root';
 export const   password = process.env.DB_PASS || null;
-export const    database = process.env.DB_NAME || 'app_development';
+export const    database = process.env.DB_NAME || 'take_medicine';
 export const  host = process.env.DB_HOST || '127.0.0.1';
 export const  dialect = 'mysql';
 
@@ -25,3 +25,5 @@ export const  dialect = 'mysql';
 //     dialect: 'mysql'
 //   }
 // };
+
+
