@@ -1,4 +1,4 @@
-const ReminderModel = require("../models/ReminderModel");
+import ReminderModel from "../models/ReminderModel.js";
 
 // GET - Todos los recordatorios de un usuario
 export const getAllReminders = async (req, res) => {
