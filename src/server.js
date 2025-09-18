@@ -1,6 +1,6 @@
 import app from "./app.js";
-import { sequelize } from "../models/index.js";
-
+import db_connection from './database/db_connection.js';
+import User from "./models/ReminderModel.js"
 const PORT = process.env.PORT || 3000;
 
 (async () => {

@@ -1,22 +1,31 @@
-const request = require('supertest');
-const app = require('../../src/app');
-const { sequelize } = require('../../src/models');
+import request from 'supertest';
+import app from '../../src/models/index.js'; 
 
-beforeAll(async () => {
-  // en test usamos sync para crear tablas desde los modelos (o usar migraciones test)
-  await sequelize.sync({ force: true });
-});
+describe('POST /api/users', () => {
+  it('debería crear un usuario', async () => {
+    const res = await request(app)
+      .post('/api/users')
+      .send({
+        name: 'testuser', 
+        email: 'test@example.com',
+        password: '123456',
+      });
 
-afterAll(async () => {
-  await sequelize.close();
-});
+    expect(res.statusCode).toEqual(201);
+    expect(res.body).toHaveProperty('id');
+    expect(res.body).not.toHaveProperty('password'); 
+  });
 
-test('POST /api/users crea usuario', async () => {
-  const res = await request(app)
-    .post('/api/users')
-    .send({ name: 'Pepito', email: 'pepito@example.com', password: '123456' });
+  it('debería fallar con email inválido', async () => {
+    const res = await request(app)
+      .post('/api/users')
+      .send({
+        name: 'testuser',
+        email: 'no-es-email',
+        password: '123456',
+      });
 
-  expect(res.statusCode).toBe(201);
-  expect(res.body).toHaveProperty('id');
-  expect(res.body).not.toHaveProperty('password');
+    expect(res.statusCode).toEqual(400);
+    expect(res.body).toHaveProperty('error');
+  });
 });
