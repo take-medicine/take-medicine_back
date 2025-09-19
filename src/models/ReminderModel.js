@@ -1,40 +1,50 @@
-import { DataTypes, Model } from 'sequelize';
-import sequelize from '../database/db_connection.js';
+// src/models/MedicineModel.js
+import { DataTypes } from "sequelize";
+import db_connection from "../database/db_connection.js";
 
-class Reminder extends Model {
-  static associate(models) {
-    // Reminder.belongsTo(models.User, { foreignKey: 'userId' });
-  }
-}
-
-Reminder.init({
+const MedicineModel = db_connection.define("Medicine", {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
-    autoIncrement: true
   },
-  medicationName: {
-    type: DataTypes.STRING,
-    allowNull: false
+  name: {
+    type: DataTypes.STRING(100),
+    allowNull: false,
   },
-  time: {
-    type: DataTypes.STRING,
-    allowNull: false
+  dosage: {
+    type: DataTypes.STRING(50),
+    allowNull: false,
   },
-  userId: {
+  frequency_hours: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
-  taken: {
+  scheduled_times: {
+    type: DataTypes.JSON,
+    allowNull: false,
+  },
+  start_date: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW,
+  },
+  end_date: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  active: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
-  }
+    defaultValue: true,
+  },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+  },
 }, {
-  sequelize,
-  modelName: 'Reminder',
-  tableName: 'reminders',
+  tableName: "medicines",
   underscored: true,
-  timestamps: true
+  timestamps: true,
 });
 
-export default Reminder;
+export default MedicineModel;

@@ -1,30 +1,19 @@
-// REEMPLAZA todo el contenido actual con esto:
-import 'dotenv/config';
+// src/config/database.js
+import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
 
-const config = {
-  development: {
-    username: process.env.DB_USER || 'medicine_user',
-    password: process.env.DB_PASS || 'medicine_pass_2025',
-    database: process.env.DB_NAME || 'medicine_db',
-    host: process.env.DB_HOST || '127.0.0.1',
-    port: process.env.DB_PORT || 3306,
-    dialect: 'mysql',
-    logging: true
-  },
-  test: {
-    username: process.env.DB_USER || 'medicine_user',
-    password: process.env.DB_PASS || 'medicine_pass_2025',
-    database: process.env.DB_TEST || 'medicine_test_db',
-    host: process.env.DB_HOST || '127.0.0.1',
-    port: process.env.DB_PORT || 3306,
-    dialect: 'mysql',
-    logging: false
-  },
-  production: {
-    use_env_variable: "DATABASE_URL",
+dotenv.config();
+
+const sequelize = new Sequelize(
+  process.env.DB_NAME || "medicine_db",
+  process.env.DB_USER || "root",
+  process.env.DB_PASSWORD || "",
+  {
+    host: process.env.DB_HOST || "localhost",
     dialect: "mysql",
-    logging: false
+    port: process.env.DB_PORT || 3306,
+    logging: console.log, // pon false si no quieres ver SQL en consola
   }
-};
+);
 
-export default config;
+export default sequelize; // 👈 importante exportar la instancia
